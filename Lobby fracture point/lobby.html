@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title><img src="images/logo-removebg-preview.png" alt="">Fracture Point Lobby Prototype</title>
+    <link rel="stylesheet" href="lobby.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="splash-screen" id="splash-screen">
+        <div class="splash-content">
+            <div class="logo-container">
+                <img src="images/GAMEHOUSE-removebg-preview.png" alt="GameHouse Labs Logo" class="logo gamehouse-logo">
+                <span class="logo-x">X</span>
+                <img src="images/logo-removebg-preview.png" alt="Fracture Point Logo" class="logo fracture-point-logo">
+            </div>
+            <h1 class="game-title">You earn it, or you lose it!</h1>
+            <div class="loading-bar-container">
+                <div class="loading-bar-fill"></div>
+            </div>
+            <p class="loading-text">Connecting to servers...</p>
+            <button class="splash-start-btn" id="splash-start-btn" style="display: none;">START GAME</button>
+            <button class="splash-connect-wallet-btn" id="splash-connect-wallet-btn" style="display: none;">CONNECT WALLET</button>
+        </div>
+    </div>
+
+    <div class="lobby-container" id="main-lobby-container">
+        <header class="top-bar" id="lobby-top-bar">
+            <div class="top-left">
+                <div class="profile-section">
+                    <img src="images/supaman.jfif" alt="Profile Icon" class="profile-icon" >
+                    <div class="profile-info" >
+                        <span class="player-name">SUPAMAN</span>
+                        <span class="player-level">Lv 74</span>
+                    </div>
+                </div>
+            </div>
+            <div class="top-right">
+                <div class="currency-display">
+                    <img src="images/GHC.jpg" alt="Coin Icon" class="currency-icon">
+                    <span class="currency-value">1,290</span>
+                    <img src="images/XP.jpg" alt="Diamond Icon" class="currency-icon">
+                    <span class="currency-value">83,648</span>
+                </div>
+                <div class="top-icons">
+                    <button class="icon-btn">👤</button>
+                    <button class="icon-btn">✉️</button>
+                    <button class="icon-btn">⚙️</button>
+                    <button class="icon-btn">🔔</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content" id="lobby-main-content">
+            <nav class="left-menu">
+                <button class="menu-item active" data-section="clan">
+                    <span class="menu-icon">+</span> Faction
+                </button>
+                <button class="menu-item" data-section="quests">
+                    <span class="menu-icon">📜</span> Quests
+                </button>
+                <button class="menu-item" data-section="leaderboard">
+                    <span class="menu-icon">🏆</span> Leaderboard
+                </button>
+                <button class="menu-item" data-section="attachment-center">
+                    <span class="menu-icon">📦</span> Attachment
+                </button>
+                <button class="menu-item" data-section="variants">
+                    <span class="menu-icon">🦸‍♂️</span> Variants
+                </button>
+                <button class="menu-item" data-section="tournament">
+                    <span class="menu-icon">🏅</span> Tournaments
+                </button>
+                <button class="menu-item" data-section="player-profile">
+                    <span class="menu-icon">👤</span> Profile
+                </button>
+                <button class="menu-item" data-section="trophy-room">
+                    <span class="menu-icon">🏆</span> Trophy Room
+                </button>
+            </nav>
+
+            <section class="center-display-area" id="pre-match-lobby">
+                <div class="character-display-placeholder">
+                    <img src="images/ryle front paper.png" alt="Character" class="placeholder-character">
+                    <div class="character-name-overlay">Ryley</div>
+                    <div class="supplybox-overlay">
+                        RYLEY<br>SUPPLYBOX
+                        <div class="timer">10:02:53</div>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="right-panel">
+                <button class="right-panel-item wallet-connect-btn" data-section="wallet-modal">
+                    WALLET CONNECT!
+                </button>
+                <button class="right-panel-item battle-pass">
+                    MAX <br> BATTLE PASS
+                </button>
+                <button class="right-panel-item shop">
+                    SHOP
+                </button>
+                <button class="right-panel-item lottery">
+                    LOTTERY
+                </button>
+                <button class="right-panel-item events">
+                    EVENTS >
+                </button>
+            </aside>
+        </main>
+
+        <footer class="bottom-bar" id="lobby-bottom-bar">
+            <div class="bottom-left-buttons">
+                <button class="bottom-icon-btn room-btn">
+                    <span class="icon">🏠</span> ROOM
+                </button>
+                <div class="world-message">
+                    [World Message] who is intrested in major ryley capt....... 
+                </div>
+            </div>
+            <div class="bottom-right-controls">
+                <div class="recruit-section">
+                    <button class="recruit-btn">RECRUIT</button>
+                    <div class="mode-select">
+                        BATTLE ROYALE <br> Northgate
+                    </div>
+                </div>
+                <button class="start-btn">START</button>
+            </div>
+        </footer>
+    </div>
+
+    <section class="screen-view heroes-screen" id="variants-screen">
+        <header class="top-bar heroes-top-bar">
+            <div class="top-left">
+                <button class="back-btn" data-target-screen="pre-match-lobby">
+                    <span class="icon">«</span> VARIANTS
+                </button>
+            </div>
+            <div class="top-right">
+                <div class="currency-display">
+                    <img src="images/GHC.jpg" alt="Coin Icon" class="currency-icon">
+                    <span class="currency-value">1,290</span>
+                    <img src="images/XP.jpg" alt="Diamond Icon" class="currency-icon">
+                    <span class="currency-value">83,648</span>
+                </div>
+                <div class="top-icons">
+                    <button class="icon-btn">👤</button>
+                    <button class="icon-btn">✉️</button>
+                    <button class="icon-btn">⚙️</button>
+                    <button class="icon-btn">🔔</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="heroes-content">
+            <div class="heroes-filter-bar">
+                <div class="filter-icons">
+                    <button class="filter-btn active"><span class="icon">🎛️</span></button>
+                    <button class="filter-btn"><span class="icon">🛡️</span></button>
+                    <button class="filter-btn"><span class="icon">👁️</span></button>
+                    <button class="filter-btn"><span class="icon">➕</span></button>
+                </div>
+                <div class="hero-count">6 / 14</div>
+                <select class="sort-dropdown">
+                    <option value="default">Default</option>
+                    <option value="rarity">Rarity</option>
+                    <option value="name">Name</option>
+                    <option value="faction">Faction</option>
+                    <option value="ss-status">SS Status</option>
+                </select>
+            </div>
+            <div class="heroes-grid">
+                <div class="hero-card owned">
+                    <img src="images/ryley.png" alt="Ryley" class="hero-image">
+                    <div class="hero-name">RYLEY</div>
+                    <div class="hero-status"></div>
+                    <div class="hero-role-icons"> <span class="role-icon">🔥</span></div>
+                    <button class="equip-btn">Equip</button>
+                </div>
+                <div class="hero-card owned">
+                    <img src="images/maka sorei.png" alt="Maka" class="hero-image">
+                    <div class="hero-name">MAKA</div>
+                    <div class="hero-status"></div>
+                    <div class="hero-role-icons"> <span class="role-icon">💨</span></div>
+                    <button class="equip-btn">Equip</button>
+                </div>
+                <div class="hero-card owned">
+                    <img src="images/cassie.png" alt="Cassie" class="hero-image">
+                    <div class="hero-name">CASSIE</div>
+                    <div class="hero-status"></div>
+                    <div class="hero-role-icons"> <span class="role-icon">⚡</span></div>
+                    <button class="equip-btn">Equip</button>
+                </div>
+                <div class="hero-card locked">
+                    <img src="images/Rauber vox.png" alt="Räuber Vox" class="hero-image">
+                    <div class="hero-name">RÄUBER VOX</div>
+                    <div class="hero-status">🔒</div>
+                    <div class="hero-role-icons"> <span class="role-icon">⚙️</span></div>
+                    <button class="equip-btn" disabled>Preview</button>
+                </div>
+                <div class="hero-card locked">
+                    <img src="images/ogun.png" alt="Locked Variant" class="hero-image">
+                    <div class="hero-name">???</div>
+                    <div class="hero-status">🔒</div>
+                    <div class="hero-role-icons"></div>
+                    <button class="equip-btn" disabled>Preview</button>
+                </div>
+                </div>
+        </div>
+    </section>
+
+    <section class="screen-view player-profile-screen" id="player-profile-screen">
+        <header class="top-bar heroes-top-bar">
+            <div class="top-left">
+                <button class="back-btn" data-target-screen="pre-match-lobby">
+                    <span class="icon">«</span> PLAYER PROFILE
+                </button>
+            </div>
+            <div class="top-right">
+                <div class="currency-display">
+                    <img src="images/GHC.jpg" alt="Coin Icon" class="currency-icon">
+                    <span class="currency-value">1,290</span>
+                    <img src="images/XP.jpg" alt="Diamond Icon" class="currency-icon">
+                    <span class="currency-value">83,648</span>
+                </div>
+                <div class="top-icons">
+                    <button class="icon-btn">👤</button>
+                    <button class="icon-btn">✉️</button>
+                    <button class="icon-btn">⚙️</button>
+                    <button class="icon-btn">🔔</button>
+                </div>
+            </div>
+        </header>
+        <div class="profile-content">
+            <div class="profile-header">
+                <img src="images/supaman.jfif" alt="Player Avatar" class="profile-avatar">
+                <div class="profile-info-main">
+                    <h2 class="profile-username">SUPAMAN</h2>
+                    <p class="profile-rank">Current Rank: Gold I</p>
+                    <p class="profile-stats">Win/Loss: 120 / 45</p>
+                </div>
+            </div>
+            <div class="career-stats-section">
+                <h3>Career Stats</h3>
+                <div class="stats-grid">
+                    <div class="stat-item"><span>Kills:</span> 1561</div>
+                    <div class="stat-item"><span>Deaths:</span> 133</div>
+                    <div class="stat-item"><span>Assists:</span> 546</div>
+                    <div class="stat-item"><span>Damage Dealt:</span> 1.2M</div>
+                    <div class="stat-item"><span>Matches Played:</span> 165</div>
+                    <div class="stat-item"><span>Favorite Variant:</span> Ryley</div>
+                </div>
+            </div>
+            <div class="profile-tabs">
+                <button class="profile-tab-btn active" data-profile-tab="variants">My Variants</button>
+                <button class="profile-tab-btn" data-profile-tab="badges">My Badges</button>
+            </div>
+            <div class="profile-tab-content" id="profile-variants-tab">
+                <div class="variants-owned-grid">
+                    <div class="mini-hero-card"><img src="images/ryley.png" alt="Ryley"><span>Ryley</span></div>
+                    <div class="mini-hero-card"><img src="images/maka sorei.png" alt="Maka"><span>Maka</span></div>
+                    <div class="mini-hero-card"><img src="images/cassie.png" alt="Cassie"><span>Cassie</span></div>
+                </div>
+            </div>
+            <div class="profile-tab-content" id="profile-badges-tab" style="display: none;">
+                <div class="badges-owned-grid">
+                    <div class="mini-badge-card"><img src="images/gold-removebg-preview.png" alt="Season 1 Gold"><span>S1 Gold</span></div>
+                    <div class="mini-badge-card"><img src="images/pngwing.com.png" alt="First Win"><span>First Win</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="screen-view rankings-screen" id="rankings-screen">
+        <header class="top-bar heroes-top-bar">
+            <div class="top-left">
+                <button class="back-btn" data-target-screen="pre-match-lobby">
+                    <span class="icon">«</span> RANKINGS
+                </button>
+            </div>
+            <div class="top-right">
+                <div class="currency-display">
+                    <img src="images/GHC.jpg" alt="Coin Icon" class="currency-icon">
+                    <span class="currency-value">1,290</span>
+                    <img src="images/XP.jpg" alt="Diamond Icon" class="currency-icon">
+                    <span class="currency-value">83,648</span>
+                </div>
+                <div class="top-icons">
+                    <button class="icon-btn">👤</button>
+                    <button class="icon-btn">✉️</button>
+                    <button class="icon-btn">⚙️</button>
+                    <button class="icon-btn">🔔</button>
+                </div>
+            </div>
+        </header>
+        <div class="rankings-content">
+            <div class="rankings-tabs">
+                <button class="ranking-tab-btn active" data-ranking-tab="all-players">All Players</button>
+                <button class="ranking-tab-btn" data-ranking-tab="faction-based">Faction-based</button>
+                <button class="ranking-tab-btn" data-ranking-tab="friends">Friends</button>
+            </div>
+            <div class="rankings-list-container">
+                <table class="rankings-table" id="all-players-rankings">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Player</th>
+                            <th>Tier</th>
+                            <th>XP</th>
+                            <th>Badges</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>MultiCarrotn</td><td>Diamond I</td><td>129,500</td><td><img src="images/diamond-removebg-preview.png" alt="Diamond" class="table-badge"></td></tr>
+                        <tr><td>2</td><td>BigJumper</td><td>Platinum III</td><td>101,200</td><td><img src="images/platinum-removebg-preview.png" alt="Platinum" class="table-badge"></td></tr>
+                        <tr><td>3</td><td>SUPAMAN</td><td>Gold I</td><td>83,648</td><td><img src="images/gold-removebg-preview.png" alt="Gold" class="table-badge"></td></tr>
+                        <tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+                    </tbody>
+                </table>
+                <div class="rankings-table" id="faction-based-rankings" style="display: none;">
+                    <h3>Top Factions</h3>
+                    <ul>
+                        <li>Faction A: Rank 1 - 50.2M XP</li>
+                        <li>Faction B: Rank 2 - 45.4M XP</li>
+                    </ul>
+                </div>
+                <div class="rankings-table" id="friends-rankings" style="display: none;">
+                    <h3>Friends Rankings</h3>
+                    <ul>
+                        <li>Friend1: Rank 5 - 8,500 XP</li>
+                        <li>Friend2: Rank 10 - 7,200 XP</li>
+                    </ul>
+                </div>
+            </div>
+            <button class="how-to-qualify-btn">See how to qualify</button>
+        </div>
+    </section>
+
+    <section class="screen-view trophy-room-screen" id="trophy-room-screen">
+        <header class="top-bar heroes-top-bar">
+            <div class="top-left">
+                <button class="back-btn" data-target-screen="pre-match-lobby">
+                    <span class="icon">«</span> TROPHY ROOM
+                </button>
+            </div>
+            <div class="top-right">
+                <div class="currency-display">
+                    <img src="images/GHC.jpg" alt="Coin Icon" class="currency-icon">
+                    <span class="currency-value">1,290</span>
+                    <img src="images/XP.jpg" alt="Diamond Icon" class="currency-icon">
+                    <span class="currency-value">83,648</span>
+                </div>
+                <div class="top-icons">
+                    <button class="icon-btn">👤</button>
+                    <button class="icon-btn">✉️</button>
+                    <button class="icon-btn">⚙️</button>
+                    <button class="icon-btn">🔔</button>
+                </div>
+            </div>
+        </header>
+        <div class="trophy-room-content">
+            <div class="earned-badges-section">
+                <h3>Earned Badges</h3>
+                <div class="badge-grid">
+                    <div class="badge-item"><img src="images/gold-removebg-preview.png" alt="S1 Gold"><span>Season 1 Gold</span></div>
+                    <div class="badge-item"><img src="images/pngwing.com.png" alt="First Win"><span>First Win</span></div>
+                    <div class="badge-item"><img src="images/platinum-removebg-preview.png" alt="MVP"><span>MVP</span></div>
+                    <div class="badge-item"><img src="images/serial_killer_gold-removebg-preview.png" alt="100 Kills"><span>100 Kills</span></div>
+                    <div class="badge-item locked"><img src="images/serial_killer_max-removebg-preview.png" alt="Locked"><span>Locked</span></div>
+                </div>
+            </div>
+            <div class="achievements-section">
+                <h3>Season-based Achievements</h3>
+                <ul class="achievement-list">
+                    <li>Season 1 Completionist: Complete all S1 quests.</li>
+                    <li>Apex Predator: Achieve 10 killstreaks in S1.</li>
+                    <li>Team Player: Win 20 matches with a full squad.</li>
+                </ul>
+            </div>
+            <button class="all-time-ogs-btn">View All-Time OGs</button>
+        </div>
+    </section>
+
+    <section class="screen-view attachment-center-screen" id="attachment-center-screen">
+        <header class="top-bar heroes-top-bar">
+            <div class="top-left">
+                <button class="back-btn" data-target-screen="pre-match-lobby">
+                    <span class="icon">«</span> ATTACHMENT CENTER
+                </button>
+            </div>
+            <div class="top-right">
+                <div class="currency-display">
+                    <img src="images/GHC.jpg" alt="Coin Icon" class="currency-icon">
+                    <span class="currency-value">1,290</span>
+                    <img src="images/XP.jpg" alt="Diamond Icon" class="currency-icon">
+                    <span class="currency-value">83,648</span>
+                </div>
+                <div class="top-icons">
+                    <button class="icon-btn">👤</button>
+                    <button class="icon-btn">✉️</button>
+                    <button class="icon-btn">⚙️</button>
+                    <button class="icon-btn">🔔</button>
+                </div>
+            </div>
+        </header>
+        <div class="attachment-content">
+            <div class="attachment-categories">
+                <button class="category-btn active" data-attachment-type="weapons">Weapons</button>
+                <button class="category-btn" data-attachment-type="vehicles">Vehicles</button>
+                <button class="category-btn" data-attachment-type="jetpacks">Jetpacks</button>
+                <button class="category-btn" data-attachment-type="variants">Variants</button>
+            </div>
+            <div class="attachment-filters">
+                <select class="filter-dropdown">
+                    <option value="rarity">Rarity</option>
+                    <option value="common">Common</option>
+                    <option value="rare">Rare</option>
+                    <option value="epic">Epic</option>
+                    <option value="legendary">Legendary</option>
+                </select>
+                <select class="filter-dropdown">
+                    <option value="faction">Faction</option>
+                    <option value="faction1">Faction A</option>
+                    <option value="faction2">Faction B</option>
+                </select>
+                <select class="filter-dropdown">
+                    <option value="season">Season</option>
+                    <option value="s1">Season 1</option>
+                    <option value="s2">Season 2</option>
+                </select>
+            </div>
+            <div class="attachment-grid">
+                <div class="attachment-item">
+                    <img src="images/neon striker AR.png" alt="Assault Rifle Skin" class="attachment-image">
+                    <div class="attachment-name">Neon Striker AR</div>
+                    <div class="attachment-rarity epic">Epic</div>
+                    <button class="preview-btn">Preview</button>
+                    <button class="equip-btn">Equip</button>
+                </div>
+                <div class="attachment-item">
+                    <img src="images/skin_vehicle_buggy.png" alt="Buggy Skin" class="attachment-image">
+                    <div class="attachment-name">Desert Storm Buggy</div>
+                    <div class="attachment-rarity rare">Rare</div>
+                    <button class="preview-btn">Preview</button>
+                    <button class="equip-btn">Equip</button>
+                </div>
+                <div class="attachment-item locked">
+                    <img src="images/skin_jetpack_locked.png" alt="Locked Jetpack Skin" class="attachment-image">
+                    <div class="attachment-name">Galactic Glide Jetpack</div>
+                    <div class="attachment-rarity legendary">Legendary</div>
+                    <button class="preview-btn" disabled>Preview</button>
+                    <button class="equip-btn" disabled>Locked</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="wallet-modal-overlay" id="wallet-modal-overlay">
+        <div class="wallet-modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <h2>Connect Your Wallet</h2>
+            <div class="wallet-options">
+                <button class="web3-login-btn" id="metamask-connect">
+                    <img src="images/metamask-removebg-preview.png" alt="MetaMask" class="wallet-logo"> Connect with MetaMask
+                </button>
+                <button class="web3-login-btn" id="walletconnect-connect">
+                    <img src="images/wallet connect.png" alt="WalletConnect" class="wallet-logo"> Connect with WalletConnect
+                </button>
+                </div>
+            <div class="wallet-details" id="wallet-details" style="display: none;">
+                <p>Wallet Address: <span id="wallet-address"></span></p>
+                <p>GHC Balance: <span id="ghc-balance">0</span></p>
+                <p>NFTs Owned: <span id="nft-count">0</span></p>
+                <div class="wallet-tabs">
+                    <button class="wallet-tab-btn active" data-wallet-tab="overview">Overview</button>
+                    <button class="wallet-tab-btn" data-wallet-tab="withdrawal">Withdrawal</button>
+                    <button class="wallet-tab-btn" data-wallet-tab="claim">Claim FP</button>
+                </div>
+                <div class="wallet-tab-content" id="wallet-overview-tab">
+                    <h3>Your NFTs</h3>
+                    <div class="nft-preview-grid">
+                        <img src="images/nft_variant_1.png" alt="NFT Variant 1">
+                        <img src="images/nft_weapon_skin_1.png" alt="NFT Weapon Skin 1">
+                    </div>
+                </div>
+                <div class="wallet-tab-content" id="wallet-withdrawal-tab" style="display: none;">
+                    <p class="locked-feature">Withdrawal requests are locked for future updates.</p>
+                </div>
+                <div class="wallet-tab-content" id="wallet-claim-tab" style="display: none;">
+                    <p class="mockup-text">FP-to-GHC claim flow UI mock-up will go here. (Not yet live)</p>
+                    <button class="claim-btn" disabled>Claim GHC</button>
+                </div>
+            </div>
+            <button class="wallet-disconnect-btn" id="wallet-disconnect-btn" style="display: none;">Disconnect Wallet</button>
+        </div>
+    </div>
+
+    <script src="lobby.js"></script>
+</body>
+</html>

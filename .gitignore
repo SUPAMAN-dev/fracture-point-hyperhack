@@ -1,0 +1,15 @@
+# --- Global Ignores for Monorepo ---
+**/.env
+**/node_modules
+
+# --- Hardhat Specific Ignores (inside 'fracture point hyperhack' folder) ---
+"fracture point hyperhack/artifacts/"
+"fracture point hyperhack/cache/"
+
+# --- Other Common Operating System and Editor Ignores ---
+.DS_Store
+.vscode/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
