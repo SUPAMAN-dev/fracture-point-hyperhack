@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="lobby.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="splash-screen" id="splash-screen">
         <div class="splash-content">
@@ -461,14 +462,14 @@
         <div class="wallet-modal-content">
             <button class="modal-close-btn">&times;</button>
             <h2>Connect Your Wallet</h2>
-            <div class="wallet-options">
+            <div class="wallet-options" id="wallet-connection-options">
                 <button class="web3-login-btn" id="metamask-connect">
                     <img src="images/metamask-removebg-preview.png" alt="MetaMask" class="wallet-logo"> Connect with MetaMask
                 </button>
                 <button class="web3-login-btn" id="walletconnect-connect">
                     <img src="images/wallet connect.png" alt="WalletConnect" class="wallet-logo"> Connect with WalletConnect
                 </button>
-                </div>
+            </div>
             <div class="wallet-details" id="wallet-details" style="display: none;">
                 <p>Wallet Address: <span id="wallet-address"></span></p>
                 <p>GHC Balance: <span id="ghc-balance">0</span></p>
@@ -496,7 +497,7 @@
             <button class="wallet-disconnect-btn" id="wallet-disconnect-btn" style="display: none;">Disconnect Wallet</button>
         </div>
     </div>
-
+    <script src="https://cdn.ethers.io/lib/ethers-5.7.0.umd.min.js"></script>
     <script src="lobby.js"></script>
 </body>
 </html>

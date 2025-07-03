@@ -26,13 +26,13 @@ contract FPToken is ERC20, Ownable {
     }
 
     // Modifier to restrict functions to either the Alith Oracle or the ClaimManager contract.
-    // This is crucial for the ClaimManager to be able to burn XP.
+    
     modifier onlyAlithOrClaimManager() {
         require(msg.sender == alithOracle || msg.sender == claimManagerContract, "FPToken: Not authorized (Alith or ClaimManager only)");
         _;
     }
 
-    // MODIFIED CONSTRUCTOR: Now accepts initialOwner AND _alithOracle as parameters
+     
     constructor(address initialOwner, address _alithOracle)
         ERC20("FuturePoint Token", "FPXP")
         Ownable(initialOwner) // Sets the deployer as the initial owner
@@ -42,24 +42,7 @@ contract FPToken is ERC20, Ownable {
         emit AlithSet(_alithOracle); // Emit event for visibility
         console.log("FPToken: Constructor called. Alith Oracle set to:", _alithOracle);
     }
-
-    // REMOVED: The previous setAlith function is no longer needed as alithOracle is set in the constructor.
-    // Make sure this function is NOT present in your FPToken.sol file anymore.
-    /*
-    function setAlith(address _alith) public onlyOwner {
-        require(_alith != address(0), "FPToken: Alith cannot be zero address");
-        alithOracle = _alith;
-        emit AlithSet(_alith);
-        console.log("FPToken: alithOracle set to:", _alith);
-    }
-    */
-
-    /**
-     * @dev Sets the address of the ClaimManager contract.
-     * This function can only be called by the contract owner.
-     * This is necessary to grant ClaimManager permission to burn XP.
-     * @param _claimManager The address of the ClaimManager contract.
-     */
+ 
     function setClaimManagerContract(address _claimManager) public onlyOwner {
         require(_claimManager != address(0), "FPToken: ClaimManager cannot be zero address");
         claimManagerContract = _claimManager;

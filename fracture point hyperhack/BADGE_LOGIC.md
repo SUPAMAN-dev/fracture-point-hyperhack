@@ -63,7 +63,7 @@ Each of these ranks has a corresponding NFT with metadata for:
 
 * It creates scarcity and merit-based achievement.
 * GHC supply is protected by ensuring only top contributors earn it.
-* Non-winners don’t feel cheated—they still hold XP for future utility.
+* Non-winners don’t feel cheated they still hold XP for future utility.
 
 ---
 

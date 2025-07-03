@@ -52,7 +52,7 @@ The `ClaimManager` contract is:
 
 * ❌ Does NOT mint GHC directly.
 * ❌ Does NOT control supply of badges or XP.
-* ❌ Does NOT calculate leaderboard position (Alith or backend provides that).
+* ❌ Does NOT calculate leaderboard position (Alith provides that).
 
 ---
 
@@ -63,7 +63,7 @@ The `ClaimManager` contract is:
 3. Player calls `claim()` on ClaimManager:
 
    * It checks they haven’t claimed already.
-   * It burns 1000 FPToken (for that tier).
+   * It burns 1200 FPToken (for that tier).
    * It mints a `Master` badge to their wallet.
 4. ClaimManager emits `Claimed` event.
 5. Alith reads this and triggers optional GHC disbursement.

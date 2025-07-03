@@ -44,21 +44,7 @@ contract ClaimManager is Ownable {
         console.log("ClaimManager: Constructor called. Alith Oracle set to:", _alithOracle);
     }
 
-    // REMOVED: The previous setAlith function is no longer needed as alithOracle is set in the constructor.
-    // Make sure this function is NOT present in your ClaimManager.sol file anymore.
-    /*
-    function setAlith(address _oracle) public onlyOwner {
-        require(_oracle != address(0), "ClaimManager: Alith oracle cannot be zero address");
-        alithOracle = _oracle;
-        emit AlithSet(_oracle);
-        console.log("ClaimManager: setAlith called. Received _oracle:", _oracle);
-
-        // Transfer RankBadge ownership to the Alith oracle address
-        console.log("ClaimManager: Attempting to transfer RankBadge ownership to:", _oracle);
-        // rankBadge.transferOwnership(_oracle); // This line caused the previous issue
-        console.log("ClaimManager: RankBadge ownership transfer initiated to:", _oracle);
-    }
-    */
+     
 
     function newSeason() public onlyOwner {
         currentSeason++;
