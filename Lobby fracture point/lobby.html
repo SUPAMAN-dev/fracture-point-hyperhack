@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title><img src="images/logo-removebg-preview.png" alt="">Fracture Point Lobby Prototype</title>
     <link rel="stylesheet" href="lobby.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"
+        type="application/javascript"></script>
+    <script>
+        // Fallback if the main CDN fails
+        if (typeof ethers === 'undefined') {
+            document.write('<script src="https://unpkg.com/ethers@5.7.2/dist/ethers.umd.min.js"><\/script>');
+        }
+    </script>
 </head>
 
 <body>
@@ -22,7 +32,8 @@
             </div>
             <p class="loading-text">Connecting to servers...</p>
             <button class="splash-start-btn" id="splash-start-btn" style="display: none;">START GAME</button>
-            <button class="splash-connect-wallet-btn" id="splash-connect-wallet-btn" style="display: none;">CONNECT WALLET</button>
+            <button class="splash-connect-wallet-btn" id="splash-connect-wallet-btn" style="display: none;">CONNECT
+                WALLET</button>
         </div>
     </div>
 
@@ -30,8 +41,8 @@
         <header class="top-bar" id="lobby-top-bar">
             <div class="top-left">
                 <div class="profile-section">
-                    <img src="images/supaman.jfif" alt="Profile Icon" class="profile-icon" >
-                    <div class="profile-info" >
+                    <img src="images/supaman.jfif" alt="Profile Icon" class="profile-icon">
+                    <div class="profile-info">
                         <span class="player-name">SUPAMAN</span>
                         <span class="player-level">Lv 74</span>
                     </div>
@@ -96,6 +107,9 @@
                 <button class="right-panel-item wallet-connect-btn" data-section="wallet-modal">
                     WALLET CONNECT!
                 </button>
+                <button class="right-panel-item mint-xp-btn" id="mint-xp-btn" style="display: none;">
+                    MINT XP TOKENS
+                </button>
                 <button class="right-panel-item battle-pass">
                     MAX <br> BATTLE PASS
                 </button>
@@ -117,7 +131,7 @@
                     <span class="icon">🏠</span> ROOM
                 </button>
                 <div class="world-message">
-                    [World Message] who is intrested in major ryley capt....... 
+                    [World Message] who is intrested in major ryley capt.......
                 </div>
             </div>
             <div class="bottom-right-controls">
@@ -208,7 +222,7 @@
                     <div class="hero-role-icons"></div>
                     <button class="equip-btn" disabled>Preview</button>
                 </div>
-                </div>
+            </div>
         </div>
     </section>
 
@@ -267,8 +281,10 @@
             </div>
             <div class="profile-tab-content" id="profile-badges-tab" style="display: none;">
                 <div class="badges-owned-grid">
-                    <div class="mini-badge-card"><img src="images/gold-removebg-preview.png" alt="Season 1 Gold"><span>S1 Gold</span></div>
-                    <div class="mini-badge-card"><img src="images/pngwing.com.png" alt="First Win"><span>First Win</span></div>
+                    <div class="mini-badge-card"><img src="images/gold-removebg-preview.png"
+                            alt="Season 1 Gold"><span>S1 Gold</span></div>
+                    <div class="mini-badge-card"><img src="images/pngwing.com.png" alt="First Win"><span>First
+                            Win</span></div>
                 </div>
             </div>
         </div>
@@ -314,10 +330,34 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>1</td><td>MultiCarrotn</td><td>Diamond I</td><td>129,500</td><td><img src="images/diamond-removebg-preview.png" alt="Diamond" class="table-badge"></td></tr>
-                        <tr><td>2</td><td>BigJumper</td><td>Platinum III</td><td>101,200</td><td><img src="images/platinum-removebg-preview.png" alt="Platinum" class="table-badge"></td></tr>
-                        <tr><td>3</td><td>SUPAMAN</td><td>Gold I</td><td>83,648</td><td><img src="images/gold-removebg-preview.png" alt="Gold" class="table-badge"></td></tr>
-                        <tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+                        <tr>
+                            <td>1</td>
+                            <td>MultiCarrotn</td>
+                            <td>Diamond I</td>
+                            <td>129,500</td>
+                            <td><img src="images/diamond-removebg-preview.png" alt="Diamond" class="table-badge"></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>BigJumper</td>
+                            <td>Platinum III</td>
+                            <td>101,200</td>
+                            <td><img src="images/platinum-removebg-preview.png" alt="Platinum" class="table-badge"></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>SUPAMAN</td>
+                            <td>Gold I</td>
+                            <td>83,648</td>
+                            <td><img src="images/gold-removebg-preview.png" alt="Gold" class="table-badge"></td>
+                        </tr>
+                        <tr>
+                            <td>...</td>
+                            <td>...</td>
+                            <td>...</td>
+                            <td>...</td>
+                            <td>...</td>
+                        </tr>
                     </tbody>
                 </table>
                 <div class="rankings-table" id="faction-based-rankings" style="display: none;">
@@ -365,11 +405,16 @@
             <div class="earned-badges-section">
                 <h3>Earned Badges</h3>
                 <div class="badge-grid">
-                    <div class="badge-item"><img src="images/gold-removebg-preview.png" alt="S1 Gold"><span>Season 1 Gold</span></div>
-                    <div class="badge-item"><img src="images/pngwing.com.png" alt="First Win"><span>First Win</span></div>
-                    <div class="badge-item"><img src="images/platinum-removebg-preview.png" alt="MVP"><span>MVP</span></div>
-                    <div class="badge-item"><img src="images/serial_killer_gold-removebg-preview.png" alt="100 Kills"><span>100 Kills</span></div>
-                    <div class="badge-item locked"><img src="images/serial_killer_max-removebg-preview.png" alt="Locked"><span>Locked</span></div>
+                    <div class="badge-item"><img src="images/gold-removebg-preview.png" alt="S1 Gold"><span>Season 1
+                            Gold</span></div>
+                    <div class="badge-item"><img src="images/pngwing.com.png" alt="First Win"><span>First Win</span>
+                    </div>
+                    <div class="badge-item"><img src="images/platinum-removebg-preview.png" alt="MVP"><span>MVP</span>
+                    </div>
+                    <div class="badge-item"><img src="images/serial_killer_gold-removebg-preview.png"
+                            alt="100 Kills"><span>100 Kills</span></div>
+                    <div class="badge-item locked"><img src="images/serial_killer_max-removebg-preview.png"
+                            alt="Locked"><span>Locked</span></div>
                 </div>
             </div>
             <div class="achievements-section">
@@ -464,10 +509,12 @@
             <h2>Connect Your Wallet</h2>
             <div class="wallet-options" id="wallet-connection-options">
                 <button class="web3-login-btn" id="metamask-connect">
-                    <img src="images/metamask-removebg-preview.png" alt="MetaMask" class="wallet-logo"> Connect with MetaMask
+                    <img src="images/metamask-removebg-preview.png" alt="MetaMask" class="wallet-logo"> Connect with
+                    MetaMask
                 </button>
                 <button class="web3-login-btn" id="walletconnect-connect">
-                    <img src="images/wallet connect.png" alt="WalletConnect" class="wallet-logo"> Connect with WalletConnect
+                    <img src="images/wallet connect.png" alt="WalletConnect" class="wallet-logo"> Connect with
+                    WalletConnect
                 </button>
             </div>
             <div class="wallet-details" id="wallet-details" style="display: none;">
@@ -494,10 +541,11 @@
                     <button class="claim-btn" disabled>Claim GHC</button>
                 </div>
             </div>
-            <button class="wallet-disconnect-btn" id="wallet-disconnect-btn" style="display: none;">Disconnect Wallet</button>
+            <button class="wallet-disconnect-btn" id="wallet-disconnect-btn" style="display: none;">Disconnect
+                Wallet</button>
         </div>
     </div>
-    <script src="https://cdn.ethers.io/lib/ethers-5.7.0.umd.min.js"></script>
     <script src="lobby.js"></script>
 </body>
+
 </html>
